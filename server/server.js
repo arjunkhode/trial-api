@@ -8,13 +8,13 @@ var {capitalize} = require('./models/fodu');
 var app = express();
 const port = process.env.PORT || 3000;
 
-
+const path = require('path');
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 
 app.use(bodyParser.json());
 
-app.get('/site', (req,res) => {
+app.get('/', (req,res) => {
 	res.render('weasel');
 });
 
