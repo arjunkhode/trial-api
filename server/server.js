@@ -8,11 +8,20 @@ var {capitalize} = require('./models/fodu');
 var app = express();
 const port = process.env.PORT || 3000;
 
+
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','pug');
+
 app.use(bodyParser.json());
+
+app.get('/site', (req,res) => {
+	res.render('weasel');
+});
 
 app.post('/fodos', (req,res) => {
 	var fod = new Fodu_model({
-		name: req.body.name
+		name: req.body.name,
+		element: req.body.element
 	});
 
 	fod.save().then((doc)=>{
